@@ -1,0 +1,20 @@
+# Local env overrides
+.env
+
+# Docker / compose noise
+*.log
+
+# Persisted Azure CLI state
+prod-env/azure/*
+lab-env/azure/*
+sandbox-env/azure/*
+
+# Persisted Codex config and session data
+prod-env/codex/*
+lab-env/codex/*
+sandbox-env/codex/*
+
+# Workspace contents are intentionally user-managed and usually not tracked here
+prod-env/workspace/*
+lab-env/workspace/*
+sandbox-env/workspace/*

@@ -7,6 +7,7 @@ ARG CODEX_NPM_PACKAGE=@openai/codex
 SHELL ["/bin/bash", "-lc"]
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    bubblewrap \
     ca-certificates \
     curl \
     git \

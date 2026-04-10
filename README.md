@@ -22,6 +22,7 @@ All three containers join the custom Docker bridge network `agent-net`. Docker a
 
 The image defined in [`base/Dockerfile`](base/Dockerfile) includes:
 
+- `bubblewrap`
 - Ubuntu 24.04
 - `curl`, `git`, `jq`, `unzip`, `vim`, `nano`, `dnsutils`, `iputils-ping`, `openssh-client`, `python3`, `python3-pip`
 - Node.js and npm
@@ -170,6 +171,10 @@ Example:
 ./scripts/enter-prod.sh
 codex
 ```
+
+## Bubblewrap Note
+
+The image installs system `bubblewrap` so Codex can use the host package directly inside the container instead of falling back to its vendored copy.
 
 ## Managing The Stack
 

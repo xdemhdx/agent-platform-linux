@@ -8,6 +8,8 @@ This project gives you three persistent Dockerized terminal environments on a Li
 
 Each container has its own mounted workspace, its own Azure CLI state folder, and its own Codex state folder. You manage the whole stack with Docker Compose and Bash scripts.
 
+If you want one friendly entry point instead of remembering every helper script, use [`agent.sh`](agent.sh), which shows an interactive terminal menu and explains what each action does.
+
 For moving this setup to another Linux machine later, use [`INSTALL-NEW-PC.md`](INSTALL-NEW-PC.md).
 
 ## Architecture
@@ -55,6 +57,7 @@ Because each container mounts different folders, each environment keeps its own 
 
 ```text
 agent-platform-linux/
+|-- agent.sh
 |-- docker-compose.yml
 |-- .env.example
 |-- .gitignore
@@ -106,12 +109,25 @@ From your shell:
 cd ./agent-platform-linux
 cp .env.example .env
 chmod +x scripts/*.sh
+chmod +x agent.sh
 ./scripts/build.sh
 ./scripts/up.sh
 ./scripts/status.sh
 ```
 
 If you do not want a `.env` file yet, you can skip that copy step because the compose file already has sensible defaults.
+
+## Interactive Menu
+
+If you prefer a single command instead of multiple helper scripts:
+
+```bash
+cd ./agent-platform-linux
+chmod +x agent.sh
+./agent.sh
+```
+
+The menu describes each action before you choose it, including build, start, stop, status, logs, and entering each environment.
 
 ## Azure CLI State And Separate Logins
 
@@ -189,6 +205,8 @@ Use the included Bash scripts:
 - [`scripts/logs.sh`](scripts/logs.sh) shows compose logs
 - [`scripts/status.sh`](scripts/status.sh) shows compose status and basic tool checks
 
+Or use [`agent.sh`](agent.sh) as the interactive front end to those scripts.
+
 ## Updating The Image Later
 
 When you want to refresh the base environment:
@@ -248,6 +266,7 @@ The prompt also includes the hostname so you can tell instantly which environmen
 cd ./agent-platform-linux
 cp .env.example .env
 chmod +x scripts/*.sh
+chmod +x agent.sh
 ./scripts/build.sh
 ./scripts/up.sh
 ./scripts/status.sh

@@ -27,10 +27,21 @@ cd agent-platform-linux
 ```bash
 cp .env.example .env
 chmod +x scripts/*.sh
+chmod +x agent.sh
 ./scripts/build.sh
 ./scripts/up.sh
 ./scripts/status.sh
 ```
+
+## Interactive Menu
+
+If you want a single command instead of remembering the helper scripts:
+
+```bash
+./agent.sh
+```
+
+It shows a menu and a short description of what each action does.
 
 ## Sign In To Azure Separately
 
